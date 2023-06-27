@@ -1,0 +1,22 @@
+name: "Action for testing"
+description: "An action for testing pocs"
+
+inputs:
+  token:
+    description: "Github token"
+    required: true
+  head_branch:
+    description: "Head branch of the pr"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Welcome"
+      shell: bash
+      run: |
+        echo "Welcome ${{ inputs.head_branch }}"
+        if [ ${{ inputs.token }} -eq "" ]
+        then
+          echo "Hello"
+        fi
